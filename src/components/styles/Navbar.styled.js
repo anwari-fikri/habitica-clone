@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledHeader = styled.header`
+export const StyledNavbar = styled.header`
   background-color: ${({ theme }) => theme.colors.header};
   padding: 8px 16px;
 `

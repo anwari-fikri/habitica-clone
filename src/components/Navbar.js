@@ -1,5 +1,5 @@
 import { 
-  StyledHeader, 
+  StyledNavbar, 
   NavContainer, 
   LeftContainer,
   NavbarLinkContainer,
@@ -10,11 +10,11 @@ import {
   Icon,
   IconContainer,
   Span}
-   from "./styles/Header.styled";
+   from "./styles/Navbar.styled";
 
-export default function Header() {
+export default function Navbar() {
   return(
-    <StyledHeader>
+    <StyledNavbar>
       <NavContainer>
         <LeftContainer>
           <LogoContainer>
@@ -54,6 +54,6 @@ export default function Header() {
           </IconContainer>
         </RightContainer>
       </NavContainer>
-    </StyledHeader>
+    </StyledNavbar>
   );
 }

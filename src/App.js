@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import GlobalStyles from "./components/styles/Global";
 
 const theme = {
@@ -15,7 +15,7 @@ function App() {
     <ThemeProvider theme = {theme}>
       <>
         <GlobalStyles/>
-        <Header/>
+        <Navbar/>
       </>
     </ThemeProvider>
   );
