@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const StyledNavbar = styled.header`
-  background-color: ${({ theme }) => theme.colors.header};
+  background-color: ${({ theme }) => theme.colors.navbar};
   padding: 8px 16px;
 `
 
 export const LeftContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.header};
+  background-color: ${({ theme }) => theme.colors.navbar};
   display: flex;
   align-items: center;
 `
 
 export const RightContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.header};
+  background-color: ${({ theme }) => theme.colors.navbar};
   flex: 30%;
   display: flex;
   justify-content: flex-end;
