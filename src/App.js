@@ -1,10 +1,12 @@
 import { ThemeProvider } from "styled-components";
 import Navbar from "./components/Navbar";
+import AppHeader from "./components/AppHeader";
 import GlobalStyles from "./components/styles/Global";
 
 const theme = {
   colors: {
-    navbar: '#441c75',
+    navbar: '#432874',
+    appheader: '#36205d',
     body: '#fff',
     footer: '#003333',
   },
@@ -16,6 +18,7 @@ function App() {
       <>
         <GlobalStyles/>
         <Navbar/>
+        <AppHeader/>
       </>
     </ThemeProvider>
   );
