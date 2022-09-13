@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import Navbar from "./components/Navbar";
 import AppHeader from "./components/AppHeader";
+import UserTasks from "./components/UserTasks";
 import GlobalStyles from "./components/styles/Global";
 
 const theme = {
@@ -19,6 +20,7 @@ function App() {
         <GlobalStyles/>
         <Navbar/>
         <AppHeader/>
+        <UserTasks/>
       </>
     </ThemeProvider>
   );
