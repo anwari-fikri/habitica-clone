@@ -102,7 +102,18 @@ export const QuickAdd = styled.textarea`
 
 export const Control = styled.div`
   border-radius: ${props => props.left ? '5px 0 0 5px' : '0 5px 5px 0'};
-  background: ${props => props.habit ? '#24CC8F' : '#50B5E9'};
+  background: ${props => {
+    switch (props.$type) {
+      case 'habit':
+        return '#24CC8F';
+      case 'daily':
+        return '#50B5E9';
+      case 'todo':
+        return '#FFBE5D';
+      default:
+        return '#EDECEE';
+    }
+  }};
 
   padding: 15px 6px 30px 6px;
   box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
@@ -178,4 +189,20 @@ export const DailyStreakContainer = styled(HabitStreakContainer)`
 
 export const DailyStreak = styled(HabitStreak)`
 
+`
+
+export const ToDo = styled(Habit)`
+  
+`
+
+export const ToDoLogo = styled(HabitLogo)`
+
+`
+
+export const ToDoInfo = styled(HabitInfo)`
+
+`
+
+export const ToDoName = styled(HabitName)`
+  
 `
