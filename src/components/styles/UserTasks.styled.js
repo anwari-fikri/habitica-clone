@@ -103,15 +103,17 @@ export const QuickAdd = styled.textarea`
 export const Habit = styled.div`
   display: flex;
   margin: 0 0 3px 0;
+`
+
+export const Control = styled.div`
+  border-radius: ${props => props.left ? '5px 0 0 5px' : '0 5px 5px 0'};
+  
+  background: #24CC8F;
+  padding: 15px 6px 30px 6px;
   box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
 `
 
-export const LeftControl = styled.div`
-  background: #24CC8F;
-  padding: 20px 8px;
-`
-
-export const LeftControlButton = styled.button`
+export const ControlButton = styled.button`
   background: #1A181D40;
   cursor: pointer;
   border-radius: 50%;
@@ -135,7 +137,7 @@ export const HabitInfo = styled.div`
 export const HabitName = styled.span`
   color: #34313A;
   font-size: 16px;
-  font-family: 'Roboto-condensed', sans-serif;
+  font-family: 'Roboto', sans-serif;
   padding: 4px 0 10px 12px;
 `
 

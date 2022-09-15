@@ -2,7 +2,7 @@ import { Flex } from "./styles/Flex.styled";
 import { 
   ColumnTitle,
   InputContainer, 
-  LeftControlButton, 
+  ControlButton, 
   QuickAdd, 
   SearchBar, 
   StyledUserTasks, 
@@ -15,7 +15,7 @@ import {
   TasksList, 
   TasksNavigation,
   Habit,
-  LeftControl, 
+  Control, 
   HabitLogo,
   HabitInfo,
   HabitStreakContainer,
@@ -50,11 +50,11 @@ export default function UserTasks() {
             <TasksList>
               <QuickAdd placeholder="Add a Habit"></QuickAdd>
               <Habit>
-                <LeftControl>
-                    <LeftControlButton>
+                <Control left>
+                    <ControlButton>
                       <HabitLogo src="./images/plus-sign.svg"></HabitLogo>
-                    </LeftControlButton>
-                </LeftControl>
+                    </ControlButton>
+                </Control>
                 <HabitInfo>
                   <HabitName>Wake up before 9</HabitName>
                   <HabitStreakContainer>
@@ -63,11 +63,11 @@ export default function UserTasks() {
                     <HabitLogo src="./images/habit-tags.svg"></HabitLogo>
                   </HabitStreakContainer>
                 </HabitInfo>
-                <LeftControl>
-                  <LeftControlButton>
+                <Control>
+                  <ControlButton>
                     <HabitLogo src="./images/minus-sign.svg"></HabitLogo>
-                  </LeftControlButton>
-                </LeftControl>
+                  </ControlButton>
+                </Control>
               </Habit>
             </TasksList>
           </TasksColumn>
