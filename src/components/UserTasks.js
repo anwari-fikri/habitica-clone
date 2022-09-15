@@ -30,7 +30,13 @@ import {
   DailyStreak,
   ToDo,
   ToDoInfo,
-  ToDoName,} from "./styles/UserTasks.styled";
+  ToDoName,
+  Item,
+  ItemImage,
+  ItemPriceContainer,
+  ItemPriceLogo,
+  ItemPrice,
+  ItemsContainer,} from "./styles/UserTasks.styled";
 
 export default function UserTasks() {
   return(
@@ -133,10 +139,38 @@ export default function UserTasks() {
           <TasksColumn>
             <Flex>
               <ColumnTitle>Rewards</ColumnTitle>
-              <TasksFilter>All</TasksFilter>
-              <TasksFilter>Custom</TasksFilter>
-              <TasksFilter>Wishlist</TasksFilter>
+              <TasksFilterContainer>
+                <TasksFilter>All</TasksFilter>
+                <TasksFilter>Custom</TasksFilter>
+                <TasksFilter>Wishlist</TasksFilter>
+              </TasksFilterContainer>
             </Flex>
+            <TasksList>
+              <QuickAdd placeholder="Add a Reward"></QuickAdd>
+              <ItemsContainer>
+                <Item>
+                    <ItemImage></ItemImage>
+                    <ItemPriceContainer>
+                      <ItemPriceLogo src="./images/gold.svg"></ItemPriceLogo>
+                      <ItemPrice>25</ItemPrice>
+                    </ItemPriceContainer>
+                  </Item>
+                  <Item>
+                    <ItemImage></ItemImage>
+                    <ItemPriceContainer>
+                      <ItemPriceLogo src="./images/gold.svg"></ItemPriceLogo>
+                      <ItemPrice>25</ItemPrice>
+                    </ItemPriceContainer>
+                  </Item>
+                  <Item>
+                    <ItemImage></ItemImage>
+                    <ItemPriceContainer>
+                      <ItemPriceLogo src="./images/gold.svg"></ItemPriceLogo>
+                      <ItemPrice>25</ItemPrice>
+                    </ItemPriceContainer>
+                  </Item>
+              </ItemsContainer>
+            </TasksList>
           </TasksColumn>
         </Flex>
         
