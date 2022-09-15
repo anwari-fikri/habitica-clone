@@ -100,25 +100,26 @@ export const QuickAdd = styled.textarea`
   border: none;
 `
 
-export const Habit = styled.div`
-  display: flex;
-  margin: 0 0 3px 0;
-`
-
 export const Control = styled.div`
   border-radius: ${props => props.left ? '5px 0 0 5px' : '0 5px 5px 0'};
-  
-  background: #24CC8F;
+  background: ${props => props.habit ? '#24CC8F' : '#50B5E9'};
+
   padding: 15px 6px 30px 6px;
   box-shadow: 0 1px 4px rgb(0 0 0 / 0.35);
 `
 
 export const ControlButton = styled.button`
+  border-radius: ${props => props.habit ? `50%` : '3px'};
+
   background: #1A181D40;
   cursor: pointer;
-  border-radius: 50%;
   width: 28px;
   height: 28px;
+`
+
+export const Habit = styled.div`
+  display: flex;
+  margin: 0 0 3px 0;
 `
 
 export const HabitLogo = styled.img`
@@ -153,4 +154,28 @@ export const HabitStreak = styled.span`
   color: #A5A1AC;
   font-size: 12px;
   padding: 0 5px;
+`
+
+export const Daily = styled(Habit)`
+  
+`
+
+export const DailyLogo = styled(HabitLogo)`
+
+`
+
+export const DailyInfo = styled(HabitInfo)`
+
+`
+
+export const DailyName = styled(HabitName)`
+  
+`
+
+export const DailyStreakContainer = styled(HabitStreakContainer)`
+
+`
+
+export const DailyStreak = styled(HabitStreak)`
+
 `
