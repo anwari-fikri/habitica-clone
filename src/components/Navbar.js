@@ -9,8 +9,7 @@ import {
   LogoContainer,
   Icon,
   IconContainer,
-  Span}
-   from "./styles/Navbar.styled";
+  Span } from "./styles/Navbar.styled";
 
 export default function Navbar() {
   return(
