@@ -1,7 +1,7 @@
 ## About this repository
 
 This is an beginner attempt of replicating the (front-end) main page of habit and productivity app from 'habitica.com' using **ReactJS**.\
-No plans in doing the back-end side for now.
+No plans in doing the back-end side.
 
 ## Available Scripts
 
