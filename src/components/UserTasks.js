@@ -43,12 +43,18 @@ export default function UserTasks() {
   const [habitStatus, setHabitStatus] = useState("all");
   const [filteredHabits, setFilteredHabits] = useState([]);
 
+  //run once
+  useEffect(() => {
+    getLocal();
+  // eslint-disable-next-line
+  }, []);
 
   // useEffect
   useEffect(() => {
     todoFilterHandler();
     dailyFilterHandler();
     habitFilterHandler();
+    saveLocal();
   // eslint-disable-next-line
   }, [todos, todoStatus, daily, dailyStatus, habits, habitStatus]);
 
@@ -156,6 +162,38 @@ export default function UserTasks() {
         break;
     }
   };
+  
+
+  // Saving
+  //save to local
+  const saveLocal = () => {
+    localStorage.setItem('habits', JSON.stringify(habits));
+    localStorage.setItem('daily', JSON.stringify(daily));
+    localStorage.setItem('todos', JSON.stringify(todos));
+  };
+
+  const getLocal = () => {
+    if(localStorage.getItem('habits') === null) {
+      localStorage.setItem('habits', JSON.stringify([]));
+    } else {
+      let habitLocal = JSON.parse(localStorage.getItem("habits"));
+      setHabits(habitLocal);
+    }
+
+    if(localStorage.getItem('daily') === null) {
+      localStorage.setItem('daily', JSON.stringify([]));
+    } else {
+      let dailyLocal = JSON.parse(localStorage.getItem("daily"));
+      setDaily(dailyLocal);
+    }
+
+    if(localStorage.getItem('todos') === null) {
+      localStorage.setItem('todos', JSON.stringify([]));
+    } else {
+      let todoLocal = JSON.parse(localStorage.getItem("todos"));
+      setTodos(todoLocal);
+    }
+  }
 
 
   return(
