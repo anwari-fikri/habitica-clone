@@ -36,8 +36,11 @@ export const ItemPriceLogo = styled.img`
 `
 
 export const ItemImage = styled.div`
+  font-size: 35px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 68px; 
   width: 68px;
   height: 68px;
-  background: #DDDDDD;
   margin: 12px 0;
 `

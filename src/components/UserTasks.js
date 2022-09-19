@@ -325,8 +325,8 @@ export default function UserTasks() {
             <TasksList>
               <QuickAdd placeholder="Add a Reward"></QuickAdd>
               <ItemsContainer>
-                <Reward></Reward>
-                <Reward></Reward>
+                <Reward emoji={"⚔️"}></Reward>
+                <Reward emoji={"🛡️"}></Reward>
               </ItemsContainer>
             </TasksList>
           </TasksColumn>
