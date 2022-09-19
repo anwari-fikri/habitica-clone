@@ -28,14 +28,16 @@ export default function UserTasks() {
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
   };
+  
   const submitTodoHandler = (e) => {
     e.preventDefault();
     setTodos([
       ...todos, 
-      { text: inputText, completed: false, id: Math.random()*1000 }
+      { text: inputText, id: Math.random()*1000 }
     ]);
     setInputText("");
-  }
+  };
+
 
   return(
     <StyledUserTasks>
@@ -83,7 +85,6 @@ export default function UserTasks() {
           </TasksColumn>
           {/* To do's */}
           <TasksColumn>
-            <form onSubmit={submitTodoHandler} >
               <Flex>
                 <ColumnTitle>To Do's</ColumnTitle>
                 <TasksFilterContainer>
@@ -93,17 +94,24 @@ export default function UserTasks() {
                 </TasksFilterContainer>
               </Flex>
               <TasksList>
-                <QuickAdd 
-                  value={inputText}
-                  type={"text"}
-                  onChange={inputTextHandler} 
-                  placeholder="Add a To Do"></QuickAdd>
-                  {todos.map((todo) => (
-                    <ToDo key={todo.id} text={todo.text} />
-                  ))}
-                  <ToDo/>
+                <form onSubmit={submitTodoHandler} >
+                  <QuickAdd 
+                    value={inputText}
+                    onChange={inputTextHandler} 
+                    type={"text"}
+                    placeholder="Add a To Do">  
+                  </QuickAdd>
+                </form>
+                {todos.map((todo) => (
+                  <ToDo 
+                    todo={todo}
+                    todos={todos}
+                    setTodos={setTodos}
+                    key={todo.id} 
+                    text={todo.text} 
+                  />
+                ))}
               </TasksList>
-            </form>
             
           </TasksColumn>
           {/* Rewards */}

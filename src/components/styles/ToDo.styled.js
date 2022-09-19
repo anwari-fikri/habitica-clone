@@ -26,20 +26,39 @@ export const Control = styled.div`
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
 `
 
+export const ControlImage = styled.img`
+  display: none;
+  width: 16px;
+  height: 16px;
+`
+
 export const ControlButton = styled.button`
   border-radius: 3px;
   background: #FFFFFF80;
   cursor: pointer;
   width: 28px;
   height: 28px;
+
+  &:hover {
+    background: #FFFFFFB0;
+  }
+
+  &:hover ${ControlImage} {
+    display: inline;
+  }
 `
 
-export const DropdownImage = styled.img`
-  width: 4px;
+export const DeleteImage = styled.img`
+  width: 16px;
   height: 16px;
 `
 
-export const DropdownButton = styled.button`
+export const DeleteButton = styled.button`
   background: #FFFFFF;
-  padding: 0 8px;
+  padding: 8px 8px;
+  border-radius: 50%;
+
+  &:hover {
+    background: #EEEEEE;
+  }
 `
