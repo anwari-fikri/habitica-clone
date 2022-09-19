@@ -31,11 +31,20 @@ export default function UserTasks() {
   const [todoStatus, setTodoStatus] = useState("active");
   const [filteredTodos, setFilteredTodos] = useState([]);
   
+  // Dailies
+  const [dailyText, setDailyText] = useState("");
+  const [daily, setDaily] = useState([]);
+  const [dailyStatus, setDailyStatus] = useState("all");
+  const [filteredDaily, setFilteredDaily] = useState([]);
+
+
   // useEffect
   useEffect(() => {
-    filterHandler();
+    todoFilterHandler();
+    dailyFilterHandler();
   // eslint-disable-next-line
-  }, [todos, todoStatus]);
+  }, [todos, todoStatus, daily, dailyStatus]);
+
 
   // Function
 
@@ -57,10 +66,10 @@ export default function UserTasks() {
     setTodoStatus(e)
   };
 
-  const filterHandler = () => {
+  const todoFilterHandler = () => {
     switch(todoStatus) {
       case 'complete':
-        setFilteredTodos(todos.filter(todo => todo.completed === true));
+        setFilteredDaily(todos.filter(todo => todo.completed === true));
         break;
       case 'active':
         setFilteredTodos(todos.filter(todo => todo.completed === false));
@@ -70,6 +79,40 @@ export default function UserTasks() {
         break;
     }
   };
+
+  // Dailies
+  const dailyTextHandler = (e) => {
+    setDailyText(e.target.value);
+  };
+
+  const submitDailyHandler = (e) => {
+    e.preventDefault();
+    setDaily([
+      ...daily, 
+      { text: dailyText, counter: 0, completed: false, id: Math.random()*1000 }
+    ]);
+    setDailyText("");
+  };
+
+  const dailyStatusHandler = (e) => {
+    setDailyStatus(e)
+  };
+
+  const dailyFilterHandler = () => {
+    switch(dailyStatus) {
+      case 'notDue':
+        setFilteredDaily(daily.filter(dail => dail.completed === true));
+        break;
+      case 'due':
+        setFilteredDaily(daily.filter(dail => dail.completed === false));
+        break;
+      default:
+        setFilteredDaily(daily);
+        break;
+    }
+  };
+
+
 
 
   return(
@@ -106,14 +149,32 @@ export default function UserTasks() {
             <Flex>
               <ColumnTitle>Dailies</ColumnTitle>
               <TasksFilterContainer>
-                <TasksFilter>All</TasksFilter>
-                <TasksFilter>Due</TasksFilter>
-                <TasksFilter>Not Due</TasksFilter>
+                <TasksFilter onClick={(e) => dailyStatusHandler("all")}>All</TasksFilter>
+                <TasksFilter onClick={(e) => dailyStatusHandler("due")}>Due</TasksFilter>
+                <TasksFilter onClick={(e) => dailyStatusHandler("notDue")}>Not Due</TasksFilter>
               </TasksFilterContainer>
             </Flex>
             <TasksList>
-              <QuickAdd placeholder="Add a Daily"></QuickAdd>
-              <Daily></Daily>
+              <form onSubmit={submitDailyHandler}>
+                <QuickAdd 
+                  value={dailyText}
+                  onChange={dailyTextHandler}
+                  type={"text"}
+                  placeholder="Add a Daily">
+                </QuickAdd>
+              </form>
+              {filteredDaily.length 
+                ? filteredDaily.map((dail) => (
+                    <Daily 
+                      dail={dail}
+                      daily={daily}
+                      setDaily={setDaily}
+                      key={dail.id} 
+                      text={dail.text} 
+                    />
+                  )) 
+                : <NoTaskText>You do not have any Dailies</NoTaskText>
+              }
             </TasksList>
           </TasksColumn>
           {/* To do's */}
