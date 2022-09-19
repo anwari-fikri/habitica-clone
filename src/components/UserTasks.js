@@ -25,7 +25,7 @@ import Reward from "./Reward";
 export default function UserTasks() {
   // State
 
-  // To do's
+  // todos
   const [todoText, setTodoText] = useState("");
   const [todos, setTodos] = useState([]);
   const [todoStatus, setTodoStatus] = useState("active");
@@ -37,13 +37,20 @@ export default function UserTasks() {
   const [dailyStatus, setDailyStatus] = useState("all");
   const [filteredDaily, setFilteredDaily] = useState([]);
 
+  // Habits
+  const [habitText, setHabitText] = useState("");
+  const [habits, setHabits] = useState([]);
+  const [habitStatus, setHabitStatus] = useState("all");
+  const [filteredHabits, setFilteredHabits] = useState([]);
+
 
   // useEffect
   useEffect(() => {
     todoFilterHandler();
     dailyFilterHandler();
+    habitFilterHandler();
   // eslint-disable-next-line
-  }, [todos, todoStatus, daily, dailyStatus]);
+  }, [todos, todoStatus, daily, dailyStatus, habits, habitStatus]);
 
 
   // Function
@@ -69,7 +76,7 @@ export default function UserTasks() {
   const todoFilterHandler = () => {
     switch(todoStatus) {
       case 'complete':
-        setFilteredDaily(todos.filter(todo => todo.completed === true));
+        setFilteredTodos(todos.filter(todo => todo.completed === true));
         break;
       case 'active':
         setFilteredTodos(todos.filter(todo => todo.completed === false));
@@ -112,7 +119,43 @@ export default function UserTasks() {
     }
   };
 
+  // Habit
+  const habitTextHandler = (e) => {
+    setHabitText(e.target.value);
+  };
 
+  const submitHabitHandler = (e) => {
+    e.preventDefault();
+    setHabits([
+      ...habits, 
+      { text: habitText, 
+        strength: 'neutral', 
+        plusCounter: 0, 
+        minusCounter: 0, 
+        id: Math.random()*1000 }
+    ]);
+    setHabitText("");
+  };
+
+  const habitStatusHandler = (e) => {
+    setHabitStatus(e)
+  };
+
+  const habitFilterHandler = () => {
+    switch(habitStatus) {
+      case 'strong':
+        setFilteredHabits(habits.filter(habit => 
+          (habit.strength).includes("strong") || (habit.strength).includes("neutral")));
+        break;
+      case 'weak':
+        setFilteredHabits(habits.filter(habit => 
+          (habit.strength).includes("weak")));
+        break;
+      default:
+        setFilteredHabits(habits);
+        break;
+    }
+  };
 
 
   return(
@@ -134,14 +177,32 @@ export default function UserTasks() {
             <Flex>
               <ColumnTitle>Habits</ColumnTitle> 
               <TasksFilterContainer>
-                <TasksFilter>All</TasksFilter>
-                <TasksFilter>Weak</TasksFilter>
-                <TasksFilter>Strong</TasksFilter>
+                <TasksFilter onClick={(e) => habitStatusHandler("all")}>All</TasksFilter>
+                <TasksFilter onClick={(e) => habitStatusHandler("weak")}>Weak</TasksFilter>
+                <TasksFilter onClick={(e) => habitStatusHandler("strong")}>Strong</TasksFilter>
               </TasksFilterContainer>
             </Flex>
             <TasksList>
-              <QuickAdd placeholder="Add a Habit"></QuickAdd>
-              <Habit></Habit>
+              <form onSubmit={submitHabitHandler}>
+                <QuickAdd 
+                  value={habitText}
+                  onChange={habitTextHandler}
+                  type={"text"}
+                  placeholder="Add a Habit">
+                </QuickAdd>
+              </form>
+              {filteredHabits.length 
+                ? filteredHabits.map((habit) => (
+                    <Habit 
+                      habit={habit}
+                      habits={habits}
+                      setHabits={setHabits}
+                      key={habit.id} 
+                      text={habit.text} 
+                    />
+                  )) 
+                : <NoTaskText>You do not have any Habits</NoTaskText>
+              }
             </TasksList>
           </TasksColumn>
           {/* Dailies */}
