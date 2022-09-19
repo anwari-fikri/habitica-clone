@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Flex } from "./styles/Flex.styled";
 import { 
   ColumnTitle,
@@ -21,6 +22,21 @@ import ToDo from "./ToDo";
 import Reward from "./Reward";
 
 export default function UserTasks() {
+  const [inputText, setInputText] = useState("");
+  const [todos, setTodos] = useState([]);
+
+  const inputTextHandler = (e) => {
+    setInputText(e.target.value);
+  };
+  const submitTodoHandler = (e) => {
+    e.preventDefault();
+    setTodos([
+      ...todos, 
+      { text: inputText, completed: false, id: Math.random()*1000 }
+    ]);
+    setInputText("");
+  }
+
   return(
     <StyledUserTasks>
       <TasksContainer>
@@ -67,18 +83,28 @@ export default function UserTasks() {
           </TasksColumn>
           {/* To do's */}
           <TasksColumn>
-            <Flex>
-              <ColumnTitle>To Do's</ColumnTitle>
-              <TasksFilterContainer>
-                <TasksFilter>Active</TasksFilter>
-                <TasksFilter>Scheduled</TasksFilter>
-                <TasksFilter>Complete</TasksFilter>
-              </TasksFilterContainer>
-            </Flex>
-            <TasksList>
-              <QuickAdd placeholder="Add a To Do"></QuickAdd>
-              <ToDo></ToDo>
-            </TasksList>
+            <form onSubmit={submitTodoHandler} >
+              <Flex>
+                <ColumnTitle>To Do's</ColumnTitle>
+                <TasksFilterContainer>
+                  <TasksFilter>Active</TasksFilter>
+                  <TasksFilter>Scheduled</TasksFilter>
+                  <TasksFilter>Complete</TasksFilter>
+                </TasksFilterContainer>
+              </Flex>
+              <TasksList>
+                <QuickAdd 
+                  value={inputText}
+                  type={"text"}
+                  onChange={inputTextHandler} 
+                  placeholder="Add a To Do"></QuickAdd>
+                  {todos.map((todo) => (
+                    <ToDo key={todo.id} text={todo.text} />
+                  ))}
+                  <ToDo/>
+              </TasksList>
+            </form>
+            
           </TasksColumn>
           {/* Rewards */}
           <TasksColumn>

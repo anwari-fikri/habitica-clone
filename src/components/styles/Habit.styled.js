@@ -13,7 +13,7 @@ export const HabitLogo = styled.img`
 export const HabitInfo = styled.div`
   background: #FFFFFF;
   width: 100%;
-  padding: 5px 0 0 0;
+  padding: 5px 5px 0 0;
   display: flex;
   flex-direction: column;
 `

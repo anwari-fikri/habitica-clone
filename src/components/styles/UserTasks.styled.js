@@ -86,15 +86,13 @@ export const TasksList = styled.div`
   border-radius: 3px;
 `
 
-export const QuickAdd = styled.textarea`
+export const QuickAdd = styled.input`
   background: #1A181D0F;
-  margin: 0px 0px 3px;
+  margin: 0px 0px 8px;
   padding: 12px 16px;
   width: 100%;
   height: 46.02px;
-  resize: none;
   font-weight: bold;
-  overflow: hidden;
   font-size: 14px;
   border: none;
 `

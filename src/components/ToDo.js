@@ -3,16 +3,21 @@ import {
   ToDoInfo, 
   ToDoName,
   Control,
-  ControlButton } from "./styles/ToDo.styled";
+  ControlButton, 
+  DropdownImage,
+  DropdownButton} from "./styles/ToDo.styled";
 
-export default function ToDo() {
+export default function ToDo({text}) {
   return(
     <StyledToDo>
       <Control>
         <ControlButton></ControlButton>
       </Control>
       <ToDoInfo>
-        <ToDoName>Send Package</ToDoName>
+        <ToDoName>Hello{text}</ToDoName>
+        <DropdownButton>
+          <DropdownImage src="./images/dropdown.svg"></DropdownImage>
+        </DropdownButton>
       </ToDoInfo>
     </StyledToDo>
   );
