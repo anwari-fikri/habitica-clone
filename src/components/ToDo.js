@@ -13,7 +13,14 @@ export default function ToDo({ todo, todos, setTodos, text }) {
   audio.volume = 0.2;
   
   const completeHandler = () => {
-    setTodos(todos.filter(el => el.id !== todo.id));
+    setTodos(todos.map(item => {
+      if(item.id === todo.id) {
+        return {
+          ...item, completed: !item.completed
+        }
+      }
+      return item;
+    }))
     audio.play();
   };
 
