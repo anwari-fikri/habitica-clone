@@ -5,7 +5,7 @@ import {
   HabitName } from "./Habit.styled"
 
 export const StyledToDo = styled(StyledHabit)`
-  
+
 `
 
 export const ToDoInfo = styled(HabitInfo)`
@@ -16,18 +16,18 @@ export const ToDoInfo = styled(HabitInfo)`
 `
 
 export const ToDoName = styled(HabitName)`
-
+  opacity: ${props => props.complete ? "0.5" : "1"};
 `
 
 export const Control = styled.div`
   border-radius: 5px 0 0 5px;
-  background: #FFBE5D;
   padding: 15px 6px 30px 6px;
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+  background: ${props => props.complete ? "#878190" : "#FFBE5D"};
 `
 
 export const ControlImage = styled.img`
-  display: none;
+  display: ${props => props.complete ? "inline" : "none"};
   width: 16px;
   height: 16px;
 `

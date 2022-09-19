@@ -15,7 +15,8 @@ import {
   TasksList, 
   TasksNavigation,
   TasksFilterContainer,
-  ItemsContainer } from "./styles/UserTasks.styled";
+  ItemsContainer, 
+  NoTaskText} from "./styles/UserTasks.styled";
 import Daily from "./Daily";
 import Habit from "./Habit";
 import ToDo from "./ToDo";
@@ -27,7 +28,7 @@ export default function UserTasks() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState("active");
   const [filteredTodos, setFilteredTodos] = useState([]);
-
+  
   // useEffect
   useEffect(() => {
     filterHandler();
@@ -130,15 +131,20 @@ export default function UserTasks() {
                     placeholder="Add a To Do">  
                   </QuickAdd>
                 </form>
-                {filteredTodos.map((todo) => (
-                  <ToDo 
-                    todo={todo}
-                    todos={todos}
-                    setTodos={setTodos}
-                    key={todo.id} 
-                    text={todo.text} 
-                  />
-                ))}
+                {filteredTodos.length 
+                  ? filteredTodos.map((todo) => (
+                      <ToDo 
+                        todo={todo}
+                        todos={todos}
+                        setTodos={setTodos}
+                        key={todo.id} 
+                        text={todo.text} 
+                      />
+                    )) 
+                  : <NoTaskText>You do not have any To Do's</NoTaskText>
+                }
+
+
               </TasksList>
             
           </TasksColumn>

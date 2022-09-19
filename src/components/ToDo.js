@@ -33,13 +33,16 @@ export default function ToDo({ todo, todos, setTodos, text }) {
 
   return(
     <StyledToDo>
-      <Control>
+      <Control complete={todo.completed}>
         <ControlButton onClick={completeHandler}>
-          <ControlImage src="./images/tick.svg"></ControlImage>
+          <ControlImage 
+            complete={todo.completed} 
+            src="./images/tick.svg"
+          />
         </ControlButton>
       </Control>
       <ToDoInfo>
-        <ToDoName>{text}</ToDoName>
+        <ToDoName complete={todo.completed}>{text}</ToDoName>
         <DeleteButton onClick={deleteHandler}>
           <DeleteImage src="./images/trash.svg"></DeleteImage>
         </DeleteButton>
