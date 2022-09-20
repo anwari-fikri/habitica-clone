@@ -12,8 +12,10 @@ import {
   DeleteImage } from "./styles/Habit.styled";
 
 export default function Habit({ habit, habits, setHabits, text }) {
-  let audio = new Audio("./sound/complete.mp3");
-  audio.volume = 0.2;
+  let plusAudio = new Audio("./sound/complete.mp3");
+  plusAudio.volume = 0.2;
+  let minusAudio = new Audio("./sound/fail.mp3");
+  minusAudio.volume = 0.2;
 
   function strengthHandler(plusCounter, minusCounter) {
     const difference = plusCounter - minusCounter;
@@ -44,7 +46,7 @@ export default function Habit({ habit, habits, setHabits, text }) {
       }
       return item;
     }))
-    audio.play();
+    plusAudio.play();
   }
 
   const minusCounterHandler = () => {
@@ -58,7 +60,7 @@ export default function Habit({ habit, habits, setHabits, text }) {
       }
       return item;
     }))
-    audio.play();
+    minusAudio.play();
   }
 
   const deleteHandler = () => {
