@@ -1,3 +1,7 @@
+Demo: https://www.youtube.com/watch?v=CPntJWxChVk 
+
+https://user-images.githubusercontent.com/50336496/191185382-46681d2d-14af-4438-8564-bac9433bb53f.mp4
+
 ## About this repository
 
 This is an beginner attempt of replicating the (front-end) main page of habit and productivity app from 'habitica.com' using **ReactJS**.\
