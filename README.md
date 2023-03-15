@@ -10,6 +10,7 @@ This is an beginner attempt of replicating the (front-end) main page of habit an
 
 In the project directory, you can run:
 
+### `yarn install`
 ### `yarn start`
 
 Runs the app in the development mode.\
